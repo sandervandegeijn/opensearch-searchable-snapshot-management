@@ -6,7 +6,7 @@ class Snapshot:
 
     def __init__(self, settings:Settings) -> None:
         self.base_url = settings.get_base_url()
-        self.bucket_name = settings.get_bucket_name()
+        self.bucket_name = settings.bucket
         self.indices = [".kibana*", 
                         ".opensearch-sap-pre-packaged-rules-config", 
                         ".plugins-ml-config", 

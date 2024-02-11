@@ -11,11 +11,11 @@ class Ilm:
         self.indices_to_be_restored = []
         self.indices_and_snapshots_to_be_deleted = []
         self.snapshots = []
-        self.number_of_days_on_cluster = 7
-        self.number_of_days_total_retention = 185
+        self.number_of_days_on_cluster = settings.number_of_days_on_cluster
+        self.number_of_days_total_retention = settings.number_of_days_total_retention
         
         self.requests = settings.get_requests_object()
-        self.base_url = settings.get_base_url()        
+        self.base_url = settings.url      
             
     def index_determine_state(self):
         response = self.requests.get(f"{self.base_url}/_cat/indices?format=json")

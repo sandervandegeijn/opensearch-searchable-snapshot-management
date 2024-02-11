@@ -2,20 +2,16 @@ import requests
 
 class Settings:
 
-    def __init__(self, url, bucket) -> None:
+    def __init__(self, url:str, bucket:str, cert_file_path:str, key_file_path:str, number_of_days_on_cluster:int, number_of_days_total_retention:int) -> None:
         self.url = url
         self.bucket = bucket
-
-    def get_base_url(self): 
-        return self.url
-
-    def get_bucket_name(self):
-        return self.bucket
+        self.number_of_days_on_cluster = number_of_days_on_cluster
+        self.number_of_days_total_retention = number_of_days_total_retention
+        self.cert_file_path = cert_file_path
+        self.key_file_path = key_file_path
     
     def get_requests_object(self):
-        cert_file_path = "../assets/certs/admin.pem"
-        key_file_path = "../assets/certs/admin-key.pem"
-        cert = (cert_file_path, key_file_path)
+        cert = (self.cert_file_path, self.key_file_path)
         s = requests.Session()
         s.cert = cert
         s.verify = False
